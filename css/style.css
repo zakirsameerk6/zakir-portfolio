@@ -464,3 +464,17 @@
     color: var(--primary) !important;
     padding-left: 8px;
 }
+
+.navbar-brand h1 {
+    color: white !important;
+    transition: 0.3s;
+}
+
+.navbar-brand h1:hover {
+    color: #0d6efd !important;
+}
+
+
+.typed-text-output {
+    color: #FFC448 !important;
+}
