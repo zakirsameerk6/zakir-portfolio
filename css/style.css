@@ -5,7 +5,10 @@
     --dark: #12141D;
 }
 
-
+body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
 /* GLOBAL */
 
 .my-6 {
@@ -18,15 +21,7 @@
     padding-bottom: 6rem;
 }
 
-#typed-text {
-    font-size: 20px;
-}
 
-@media (max-width: 576px) {
-    #typed-text {
-        font-size: 14px !important;
-    }
-}
 /* SPINNER */
 
 #spinner {
@@ -65,12 +60,24 @@
     background-position: center;
     background-size: cover;
 }
+.typed-text-output {
+    color: #FFC448 !important;
+}
+
+#typed-text {
+    font-size: 20px;
+}
 
 @media (max-width: 576px) {
-    .typed-text {
-        font-size: 18px !important;
+    #typed-text {
+        font-size: 14px !important;
+    }
+    .typed-text-output {
+        color: #FFC448 !important;
+        font-size: 20px !important;
     }
 }
+
 
 
 /* BUTTONS */
@@ -155,6 +162,27 @@
     box-shadow: none !important;
 }
 
+
+/* MOBILE NAVBAR SPACING */
+
+@media (max-width: 991.98px) {
+
+    .navbar {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .navbar-brand {
+        margin-left: 5px !important;
+    }
+
+    .navbar-toggler {
+        margin-right: 5px !important;
+        padding: 6px 8px !important;
+    }
+}
+
+
 .navbar-toggler-icon {
     background-image: none !important;
     width: 25px;
@@ -222,7 +250,7 @@
 
 /* MOBILE LINKS */
 
-@media (max-width: 991.98px) {
+@media (max-width: 576px) {
 
     .navbar .navbar-nav .nav-link {
         padding: 10px 0;
@@ -244,8 +272,6 @@
         padding: 12px 0;
     }
 }
-
-
 /* HEADER */
 
 .typed-cursor {
@@ -253,9 +279,7 @@
     color: var(--dark);
 }
 
-.typed-text-output {
-    color: #FFC448 !important;
-}
+
 
 
 /* ABOUT */
@@ -338,7 +362,7 @@
 }
 /* MOBILE MESSAGE LINE */
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
 
     #message-heading , #project-spacing {
         border-top: 2px solid #ddd;
