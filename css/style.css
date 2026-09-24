@@ -18,7 +18,15 @@
     padding-bottom: 6rem;
 }
 
+#typed-text {
+    font-size: 20px;
+}
 
+@media (max-width: 576px) {
+    #typed-text {
+        font-size: 14px !important;
+    }
+}
 /* SPINNER */
 
 #spinner {
