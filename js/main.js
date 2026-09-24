@@ -15,25 +15,32 @@
   new WOW().init();
 
 
-  // Smooth scrolling on the navbar links
-  $('.navbar-nav a').on('click', function (event) {
-    if (this.hash !== '') {
-      event.preventDefault();
+// Smooth scrolling on the navbar links
+$('.navbar-nav a').on('click', function (event) {
 
-      $('html, body').animate(
-        {
-          scrollTop: $(this.hash).offset().top - 45,
-        },
-        1500,
-        'easeInOutExpo'
-      );
+  if (this.hash !== '') {
+    event.preventDefault();
 
-      if ($(this).parents('.navbar-nav').length) {
-        $('.navbar-nav .active').removeClass('active');
-        $(this).closest('a').addClass('active');
-      }
+    $('html, body').animate(
+      {
+        scrollTop: $(this.hash).offset().top - 45,
+      },
+      1500,
+      'easeInOutExpo'
+    );
+
+    if ($(this).parents('.navbar-nav').length) {
+      $('.navbar-nav .active').removeClass('active');
+      $(this).closest('a').addClass('active');
     }
-  });
+
+    // Close mobile navbar
+    if (window.innerWidth < 992) {
+      $('#navbarCollapse').collapse('hide');
+    }
+  }
+
+});
 
   // Back to top button
   $(window).scroll(function () {
@@ -152,23 +159,3 @@ document
 
 
 
-// Close mobile navbar when clicking anywhere outside the navbar
-document.addEventListener("click", function (event) {
-    const navbar = document.querySelector(".navbar");
-    const navbarCollapse = document.getElementById("navbarCollapse");
-    const navbarToggler = document.querySelector(".navbar-toggler");
-
-    if (
-        window.innerWidth < 992 &&
-        navbarCollapse.classList.contains("show") &&
-        !navbar.contains(event.target)
-    ) {
-        const bsCollapse =
-            bootstrap.Collapse.getInstance(navbarCollapse) ||
-            new bootstrap.Collapse(navbarCollapse, {
-                toggle: false
-            });
-
-        bsCollapse.hide();
-    }
-});
