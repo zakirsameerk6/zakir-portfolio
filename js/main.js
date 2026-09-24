@@ -14,14 +14,6 @@
   // Initiate the wowjs
   new WOW().init();
 
-  // Navbar on scrolling
-  // $(window).scroll(function () {
-  //   if ($(this).scrollTop() > 100) {
-  //     $('.navbar').fadeIn('slow').css('display', 'flex');
-  //   } else {
-  //     $('.navbar').fadeOut('slow').css('display', 'none');
-  //   }
-  // });
 
   // Smooth scrolling on the navbar links
   $('.navbar-nav a').on('click', function (event) {
@@ -68,18 +60,7 @@
     });
   }
 
-  // Modal Video
-  // var $videoSrc;
-  // $('.btn-play').click(function () {
-  //     $videoSrc = $(this).data("src");
-  // });
-  // console.log($videoSrc);
-  // $('#videoModal').on('shown.bs.modal', function (e) {
-  //     $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-  // })
-  // $('#videoModal').on('hide.bs.modal', function (e) {
-  //     $("#video").attr('src', $videoSrc);
-  // })
+
 
   // Facts counter
   $('[data-toggle="counter-up"]').counterUp({
@@ -166,3 +147,28 @@ document
         setTimeout(() => (notification.style.display = 'none'), 5000);
       });
   });
+
+
+
+
+
+// Close mobile navbar when clicking anywhere outside the navbar
+document.addEventListener("click", function (event) {
+    const navbar = document.querySelector(".navbar");
+    const navbarCollapse = document.getElementById("navbarCollapse");
+    const navbarToggler = document.querySelector(".navbar-toggler");
+
+    if (
+        window.innerWidth < 992 &&
+        navbarCollapse.classList.contains("show") &&
+        !navbar.contains(event.target)
+    ) {
+        const bsCollapse =
+            bootstrap.Collapse.getInstance(navbarCollapse) ||
+            new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
+            });
+
+        bsCollapse.hide();
+    }
+});

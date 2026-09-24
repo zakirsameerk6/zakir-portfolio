@@ -1,10 +1,12 @@
-/********** Template CSS **********/
 :root {
     --primary: #6244C5;
     --secondary: #FFC448;
     --light: #FAFAFB;
     --dark: #12141D;
 }
+
+
+/*** Back To Top ***/
 
 .back-to-top {
     position: fixed;
@@ -13,6 +15,9 @@
     bottom: 45px;
     z-index: 99;
 }
+
+
+/*** Spacing ***/
 
 .my-6 {
     margin-top: 6rem;
@@ -26,6 +31,7 @@
 
 
 /*** Spinner ***/
+
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -34,13 +40,14 @@
 }
 
 #spinner.show {
-    transition: opacity .5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
 }
 
 
-/*** Button ***/
+/*** Buttons ***/
+
 .btn {
     font-weight: 500;
     transition: .5s;
@@ -49,6 +56,16 @@
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
 }
 
 .btn-square {
@@ -66,18 +83,9 @@
     height: 48px;
 }
 
-.btn-square,
-.btn-sm-square,
-.btn-lg-square {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: normal;
-}
-
 
 /*** Navbar ***/
+
 .navbar.fixed-top {
     display: flex;
     transition: .5s;
@@ -96,14 +104,101 @@
     color: var(--primary);
 }
 
+
+/*** Mobile Navbar Toggle ***/
+
+.navbar-toggler {
+    border: none;
+    padding: 8px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    background-image: none !important;
+    width: 25px;
+    height: 20px;
+    position: relative;
+    display: block;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    background-color: var(--dark);
+    transition: .3s ease;
+}
+
+/* Three lines */
+.navbar-toggler-icon::before {
+    top: 2px;
+    box-shadow: 0 8px 0 var(--dark), 0 16px 0 var(--dark);
+}
+
+/* Third line / Cross line */
+.navbar-toggler-icon::after {
+    display: none;
+}
+
+/* Open = Cross */
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+    top: 10px;
+    transform: rotate(45deg);
+    box-shadow: none;
+}
+
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+    display: block;
+    top: 10px;
+    transform: rotate(-45deg);
+}
+
+
+/*** Mobile Navbar Links ***/
+
 @media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
+
+    .navbar .navbar-nav .nav-link {
         padding: 10px 0;
+    }
+
+    /* Keep Bootstrap collapse working */
+    #navbarCollapse {
+        text-align: center;
+    }
+
+    #navbarCollapse .navbar-nav {
+        width: 100%;
+        margin: 0 !important;
+        align-items: center;
+    }
+
+    #navbarCollapse .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
     }
 }
 
 
+/*** Mobile Navbar Brand ***/
+
+.navbar-brand h1 {
+    color: #FFFFFF !important;
+    transition: .3s;
+}
+
+.navbar-brand h1:hover {
+    color: #0d6efd !important;
+}
+
+
 /*** Header ***/
+
 #home {
     margin-bottom: 2rem;
     background: url(../img/bg0009.webp);
@@ -118,73 +213,14 @@
     font-size: 30px;
     color: var(--dark);
 }
-/*
-.btn-play {
-    position: relative;
-    display: block;
-    box-sizing: content-box;
-    width: 16px;
-    height: 26px;
-    border-radius: 100%;
-    border: none;
-    outline: none !important;
-    padding: 18px 20px 20px 28px;
-    background: var(--primary);
+
+.typed-text-output {
+    color: #FFC448 !important;
 }
-
-.btn-play:before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 60px;
-    height: 60px;
-    background: var(--primary);
-    border-radius: 100%;
-    animation: pulse-border 1500ms ease-out infinite;
-}
-
-.btn-play:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 60px;
-    height: 60px;
-    background: #FFFFFF;
-    border-radius: 100%;
-    transition: all 200ms;
-}
-
-.btn-play span {
-    display: block;
-    position: relative;
-    z-index: 3;
-    width: 0;
-    height: 0;
-    left: -1px;
-    border-left: 16px solid var(--primary);
-    border-top: 11px solid transparent;
-    border-bottom: 11px solid transparent;
-}
-*/
-
-
-
-
-
-
-
-
 
 
 /*** About ***/
+
 #about .years .display-1 {
     font-size: 10rem;
     line-height: 9rem;
@@ -197,13 +233,14 @@
 
 
 /*** Skills ***/
+
 #skill .progress {
     height: 5px;
     border-radius: 5px;
 }
 
 #skill .progress .progress-bar {
-    width: 0px;
+    width: 0;
     border-radius: 5px;
     transition: 3s;
 }
@@ -221,7 +258,8 @@
 }
 
 
-/*** Service ***/
+/*** Services ***/
+
 .service-item .bg-icon {
     width: 100px;
     height: 100px;
@@ -234,6 +272,7 @@
 
 
 /*** Project Portfolio ***/
+
 #portfolio-flters li {
     display: inline-block;
     font-weight: 500;
@@ -276,6 +315,7 @@
 
 
 /*** Team ***/
+
 .team-item img {
     transition: .5s;
 }
@@ -311,6 +351,7 @@
 
 
 /*** Testimonial ***/
+
 .testimonial-left,
 .testimonial-right {
     position: relative;
@@ -407,74 +448,64 @@
 }
 
 
+/*** Images ***/
 
-.img-fluid{
-    object-fit: cover;
-    height: 220px;
+.img-fluid {
     width: 100%;
-    object-position: center;
+    height: 220px;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
 }
 
+
 /*** Calling Button ***/
+
 .btn-call {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 10px 20px;
-    color: #fff;
+    color: #FFFFFF;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     background-color: #007bff;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-call span {
-    font-size: 18px; /* Telephone icon size */
-    margin-right: 8px; /* Space between the icon and text */
-  }
-  
-  .btn-call:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+    transition: background-color .3s ease;
+}
+
+.btn-call span {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.btn-call:hover {
+    background-color: #0056b3;
+}
 
 
+/*** Notification ***/
 
-
-  /*massage notification    */
-   /* Center the notification at the top of the page */
-   #notification {
+#notification {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 9999; /* Ensure it is on top of other content */
+    z-index: 9999;
     width: auto;
     max-width: 90%;
     margin: 0 auto;
 }
 
+
+/*** Footer Links ***/
+
 .footer-link {
-    transition: all 0.3s ease;
+    transition: all .3s ease;
 }
 
 .footer-link:hover {
     color: var(--primary) !important;
     padding-left: 8px;
-}
-
-.navbar-brand h1 {
-    color: white !important;
-    transition: 0.3s;
-}
-
-.navbar-brand h1:hover {
-    color: #0d6efd !important;
-}
-
-
-.typed-text-output {
-    color: #FFC448 !important;
 }
